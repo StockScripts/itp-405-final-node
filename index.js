@@ -14,6 +14,7 @@ app.get('/latest_price', function(req, res, next) {
 		apikey: process.env.ALPHA_VANTAGE_API_KEY
 	})
 	.then(api_response => {
+		console.log(api_response);
 		const key = 'Time Series (' + api_response['Meta Data']['4. Interval'] + ')';
 		const results_to_send = api_response[key];
 		const latest_time = (Object.keys(results_to_send))[0];
@@ -33,6 +34,7 @@ app.get('/latest_information', function(req, res, next) {
 		apikey: process.env.ALPHA_VANTAGE_API_KEY
 	})
 	.then(api_response => {
+		console.log(api_response);
 		const key = 'Time Series (' + api_response['Meta Data']['4. Interval'] + ')';
 		const results_to_send = api_response[key];
 		res.status(200);
@@ -50,6 +52,7 @@ app.get('/historical_information', function(req, res, next) {
 		apikey: process.env.ALPHA_VANTAGE_API_KEY
 	})
 	.then(api_response => {
+		console.log(api_response);
 		const key = 'Time Series (Daily)';
 		const results_to_send = api_response[key];
 		res.status(200);
